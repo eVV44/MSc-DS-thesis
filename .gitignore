@@ -1,0 +1,28 @@
+# Virtual environments
+ig-thesis/
+venv/
+__pycache__/
+
+# Mac
+.DS_Store
+
+# Data
+data/
+*.tar.gz
+*.tsv
+top1000.dev
+
+# Models
+models/
+checkpoints/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Large files
+*.pt
+*.bin
+
+# Papers 
+papers/
+*.pdf
