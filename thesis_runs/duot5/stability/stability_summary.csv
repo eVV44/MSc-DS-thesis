@@ -1,0 +1,13 @@
+experiment,model_label,method,perturbation_type,k_masked_words,n_cases,decision_preserved_rate,mean_spearman_all,mean_spearman_doc_i,mean_spearman_doc_j,mean_spearman_preserved_only,mean_aligned_positions_doc_i,mean_aligned_positions_doc_j
+duot5,DuoT5,loo_pairwise,low_info_mask,1,50,1.0,0.984,,,0.984,,
+duot5,DuoT5,loo_pairwise,low_info_mask,3,50,1.0,0.955,,,0.955,,
+duot5,DuoT5,loo_pairwise,low_info_mask,5,50,1.0,0.9334605818872771,0.9380562738270681,0.9288648899474863,0.9334605818872771,48.56,52.66
+duot5,DuoT5,loo_pointwise,low_info_mask,1,50,1.0,0.993,,,0.993,,
+duot5,DuoT5,loo_pointwise,low_info_mask,3,50,1.0,0.955,,,0.955,,
+duot5,DuoT5,loo_pointwise,low_info_mask,5,50,1.0,0.9428009026510487,0.9267843807332997,0.9588174245687976,0.9428009026510487,48.56,54.78
+duot5,DuoT5,pairwise_ig,low_info_mask,1,50,1.0,0.966,,,0.966,,
+duot5,DuoT5,pairwise_ig,low_info_mask,3,50,1.0,0.941,,,0.941,,
+duot5,DuoT5,pairwise_ig,low_info_mask,5,50,1.0,0.9058388451597166,0.9025048488351507,0.9091728414842826,0.9058388451597166,74.5,79.72
+duot5,DuoT5,pointwise_ig,low_info_mask,1,50,1.0,0.979,,,0.979,,
+duot5,DuoT5,pointwise_ig,low_info_mask,3,50,1.0,0.944,,,0.944,,
+duot5,DuoT5,pointwise_ig,low_info_mask,5,50,1.0,0.9179684801222621,0.8944469559078815,0.9414900043366426,0.9179684801222621,74.5,82.12

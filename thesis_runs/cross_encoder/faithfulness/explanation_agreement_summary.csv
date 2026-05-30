@@ -1,0 +1,5 @@
+experiment,model_label,method_a,method_b,n_pairs,mean_spearman_full,mean_aligned,mean_top1_overlap,mean_top3_overlap,mean_top5_overlap,mean_top10_overlap,mean_top20_overlap
+cross_encoder,Cross-encoder,loo_pairwise,loo_pointwise,150,1.0,135.27333333333334,1.0,1.0,1.0,1.0,1.0
+cross_encoder,Cross-encoder,pairwise_ig,loo_pairwise,150,0.3546576507704784,135.26666666666668,0.4,0.45777777777777773,0.4546666666666666,0.44600000000000006,0.45399999999999996
+cross_encoder,Cross-encoder,pairwise_ig,pointwise_ig,150,1.0,135.26666666666668,1.0,1.0,1.0,1.0,1.0
+cross_encoder,Cross-encoder,pointwise_ig,loo_pointwise,150,0.3546576507704784,135.26666666666668,0.4,0.45777777777777773,0.4546666666666666,0.44600000000000006,0.45399999999999996

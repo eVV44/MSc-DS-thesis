@@ -1,0 +1,13 @@
+experiment,model_label,method,perturbation_type,k_masked_words,n_cases,decision_preserved_rate,mean_spearman_all,mean_spearman_doc_i,mean_spearman_doc_j,mean_spearman_preserved_only,mean_aligned_positions_doc_i,mean_aligned_positions_doc_j
+cross_encoder,Cross-encoder,loo_pairwise,low_info_mask,1,50,1.0,0.977,,,0.977,,
+cross_encoder,Cross-encoder,loo_pairwise,low_info_mask,3,50,0.98,0.931,,,0.931,,
+cross_encoder,Cross-encoder,loo_pairwise,low_info_mask,5,50,1.0,0.8862378761666687,0.8846746067750317,0.8878011455583058,0.8862378761666687,60.44,66.78
+cross_encoder,Cross-encoder,loo_pointwise,low_info_mask,1,50,1.0,0.977,,,0.977,,
+cross_encoder,Cross-encoder,loo_pointwise,low_info_mask,3,50,0.98,0.931,,,0.931,,
+cross_encoder,Cross-encoder,loo_pointwise,low_info_mask,5,50,1.0,0.8862378761666687,0.8846746067750317,0.8878011455583058,0.8862378761666687,60.44,66.78
+cross_encoder,Cross-encoder,pairwise_ig,low_info_mask,1,50,1.0,0.993,,,0.993,,
+cross_encoder,Cross-encoder,pairwise_ig,low_info_mask,3,50,0.98,0.978,,,0.978,,
+cross_encoder,Cross-encoder,pairwise_ig,low_info_mask,5,50,1.0,0.9574261506246419,0.966058939638739,0.9487933616105445,0.9574261506246419,68.34,74.58
+cross_encoder,Cross-encoder,pointwise_ig,low_info_mask,1,50,1.0,0.993,,,0.993,,
+cross_encoder,Cross-encoder,pointwise_ig,low_info_mask,3,50,0.98,0.978,,,0.978,,
+cross_encoder,Cross-encoder,pointwise_ig,low_info_mask,5,50,1.0,0.9574261506246419,0.966058939638739,0.9487933616105445,0.9574261506246419,68.34,74.58
