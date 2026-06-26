@@ -4,6 +4,7 @@ import argparse
 import itertools
 import os
 import pickle
+import random
 from pathlib import Path
 
 root = Path(__file__).resolve().parents[1]
@@ -15,6 +16,8 @@ import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[1]
 TOP_KS = [1, 3, 5, 10, 20]
+RANDOM_SEED = 42
+RANDOM_SAMPLES = 200
 
 EXPERIMENTS = {
     "cross_encoder": {
@@ -159,6 +162,34 @@ def overlap_at_k(table_a: pd.DataFrame, table_b: pd.DataFrame, k: int):
     return float(len(top_a & top_b) / denom)
 
 
+def sampled_random_overlap_at_k(
+    table: pd.DataFrame,
+    k: int,
+    rng: random.Random,
+    n_samples: int = RANDOM_SAMPLES,
+):
+    if table.empty:
+        return np.nan
+
+    coords = [
+        (str(r["side"]), int(r["position"]))
+        for _, r in table[["side", "position"]].drop_duplicates().iterrows()
+    ]
+    if not coords:
+        return np.nan
+
+    kk = min(k, len(coords))
+    top = top_k_tokens(table, kk)
+    if not top:
+        return np.nan
+
+    overlaps = []
+    for _ in range(n_samples):
+        sampled = set(rng.sample(coords, kk))
+        overlaps.append(len(set(top) & sampled) / kk)
+    return float(np.mean(overlaps))
+
+
 def full_spearman(table_a: pd.DataFrame, table_b: pd.DataFrame):
     if table_a.empty or table_b.empty:
         return np.nan, 0
@@ -200,6 +231,26 @@ def run_one(experiment_key: str):
             }
             for k in TOP_KS:
                 row[f"top{k}_overlap"] = overlap_at_k(table_a, table_b, k)
+            detail_rows.append(row)
+
+        for method in cfg["methods"]:
+            table = tables[method]
+            random_rng = random.Random(
+                f"{RANDOM_SEED}:{experiment_key}:{key[0]}:{key[1]}:{key[2]}:{method}"
+            )
+            row = {
+                "experiment": experiment_key,
+                "model_label": cfg["label"],
+                "qid": key[0],
+                "pid_i": key[1],
+                "pid_j": key[2],
+                "method_a": method,
+                "method_b": "random",
+                "spearman_full": np.nan,
+                "n_aligned": int(len(table[["side", "position"]].drop_duplicates())),
+            }
+            for k in TOP_KS:
+                row[f"top{k}_overlap"] = sampled_random_overlap_at_k(table, k, random_rng)
             detail_rows.append(row)
 
     detail_df = pd.DataFrame(detail_rows)

@@ -60,15 +60,32 @@ def build_topk_matrix(
             matrix.loc[method_a, method_b] = value
             matrix.loc[method_b, method_a] = value
 
-    # For a uniformly random top-k set drawn from N aligned token positions,
-    # the expected overlap with another top-k set is k / N.
-    k = int(topk_col.removeprefix("mean_top").split("_")[0])
-    aligned_sizes = detail_df.groupby(["qid", "pid_i", "pid_j"])["n_aligned"].first()
-    random_overlap = float((k / aligned_sizes).mean())
-    for method in methods:
-        matrix.loc[method, random_label] = random_overlap
-        matrix.loc[random_label, method] = random_overlap
-    matrix.loc[random_label, random_label] = random_overlap
+    random_rows = df[df["method_b"] == random_label]
+    if not random_rows.empty:
+        for _, row in random_rows.iterrows():
+            method = row["method_a"]
+            if method in methods:
+                value = float(row[topk_col])
+                matrix.loc[method, random_label] = value
+                matrix.loc[random_label, method] = value
+
+        random_values = [
+            float(matrix.loc[method, random_label])
+            for method in methods
+            if pd.notna(matrix.loc[method, random_label])
+        ]
+        matrix.loc[random_label, random_label] = float(np.mean(random_values)) if random_values else 0.0
+    else:
+        # Fallback for older summary files without explicit random rows.
+        # For a uniformly random top-k set drawn from N aligned token positions,
+        # the expected overlap with another top-k set is k / N.
+        k = int(topk_col.removeprefix("mean_top").split("_")[0])
+        aligned_sizes = detail_df.groupby(["qid", "pid_i", "pid_j"])["n_aligned"].first()
+        random_overlap = float((k / aligned_sizes).mean())
+        for method in methods:
+            matrix.loc[method, random_label] = random_overlap
+            matrix.loc[random_label, method] = random_overlap
+        matrix.loc[random_label, random_label] = random_overlap
 
     return matrix
 
