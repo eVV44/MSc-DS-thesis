@@ -1,0 +1,24 @@
+{
+  "cross_encoder": {
+    "query_scope": "full eligible query set",
+    "n_queries": 6980,
+    "candidate_depth": 100,
+    "output_file": "cross_encoder_queries_full_eligible_top100.csv",
+    "eligibility_rule": "query appears in candidate set and in qrels"
+  },
+  "duot5": {
+    "query_scope": "fixed random subset of queries with at least one judged relevant passage in the BM25 top-100",
+    "n_queries": 150,
+    "candidate_depth": 100,
+    "random_seed": 42,
+    "output_file": "duot5_queries_150_seed42_top100.csv",
+    "eligibility_rule": "sampled from queries whose BM25 top-100 candidate set contains at least one qrel-positive passage"
+  },
+  "shared_pool": {
+    "n_eligible_queries": 6980,
+    "n_queries_with_relevant_in_top100": 744,
+    "queries_file": "data/msmarco_passage_dev/raw/queries.dev.tsv",
+    "candidates_file": "data/msmarco_passage_dev/raw/top1000.dev",
+    "qrels_file": "data/msmarco_passage_dev/raw/qrels.dev.tsv"
+  }
+}

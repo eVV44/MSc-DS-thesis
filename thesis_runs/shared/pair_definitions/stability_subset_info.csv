@@ -1,0 +1,2 @@
+seed,n_queries,selection_rule,cross_pairs,duot5_pairs
+42,50,shared random sample from aligned 150-query explanation subset,50,50

@@ -1,0 +1,18 @@
+{
+  "cross_encoder": {
+    "input_file": "thesis_runs/cross_encoder/reranking/pairwise_scores.csv",
+    "output_file": "thesis_runs/cross_encoder/explanations/explanation_pairs_1_per_query_on_duot5_queries_seed42.csv",
+    "selection_rule": "one randomly sampled pair per query, restricted to the frozen DuoT5 150-query scope",
+    "random_seed": 42,
+    "n_rows": 150,
+    "n_queries": 150
+  },
+  "duot5": {
+    "input_file": "thesis_runs/duot5/reranking/duot5_final/pairwise_scores.csv",
+    "output_file": "thesis_runs/duot5/explanations/explanation_pairs_1_per_query_seed42.csv",
+    "selection_rule": "one randomly sampled pair per query from the frozen reranking pair table",
+    "random_seed": 42,
+    "n_rows": 150,
+    "n_queries": 150
+  }
+}
