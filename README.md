@@ -1,4 +1,6 @@
-# Explaining Pairwise Ranking Decisions in Neural Rerankers
+# How Should We Explain Pairwise Reranking Decisions?
+
+Explaining Pairwise Ranking Decisions in Neural Rerankers
 
 This repository contains the code and final outputs for my MSc thesis. The project evaluates pointwise and pairwise feature attribution explanations for neural rerankers, comparing an independently scored cross-encoder with the natively pairwise DuoT5 model under faithfulness, stability, and token-agreement analyses.
 
