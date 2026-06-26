@@ -1,16 +1,14 @@
+# -- IMPORTS --
 from __future__ import annotations
-
 import argparse
 import gc
 import re
 from pathlib import Path
-
 import numpy as np
 import pandas as pd
 import torch
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import linear_kernel
-
 from run_faithfulness_final import build_support_table, tokenize_cross, tokenize_duo_pair
 from run_retrieval_faithfulness_final import (
     EXPERIMENTS,
@@ -22,8 +20,7 @@ from run_retrieval_faithfulness_final import (
     original_model_score,
     replacement_model_score,
     setup_cross_runtime,
-    setup_duot5_runtime,
-)
+    setup_duot5_runtime)
 
 
 SENTENCE_SPLIT_RE = re.compile(r"(?<=[.!?])\s+")

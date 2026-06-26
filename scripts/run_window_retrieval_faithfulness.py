@@ -1,9 +1,8 @@
+# -- IMPORTS --
 from __future__ import annotations
-
 import argparse
 import gc
 from pathlib import Path
-
 import numpy as np
 import pandas as pd
 import torch
@@ -19,8 +18,7 @@ from run_retrieval_faithfulness_final import (
     original_model_score,
     replacement_model_score,
     setup_cross_runtime,
-    setup_duot5_runtime,
-)
+    setup_duot5_runtime)
 
 
 def parse_args():

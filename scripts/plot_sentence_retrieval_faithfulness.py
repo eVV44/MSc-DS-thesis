@@ -1,5 +1,5 @@
+# -- IMPORTS --
 from __future__ import annotations
-
 import argparse
 import os
 from pathlib import Path
@@ -8,7 +8,6 @@ root = Path(__file__).resolve().parents[1]
 os.environ.setdefault("MPLCONFIGDIR", str(root / "thesis_runs/shared/mplconfig"))
 
 import matplotlib
-
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
