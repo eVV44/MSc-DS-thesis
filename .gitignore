@@ -32,6 +32,10 @@ outputs_t5/
 # Local generated caches
 thesis_runs/shared/swift_module_cache/
 
+# Large local reranking outputs
+thesis_runs/cross_encoder/reranking/
+thesis_runs/duot5/reranking/
+
 # Papers 
 papers/
 *.pdf
