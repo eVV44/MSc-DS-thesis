@@ -109,7 +109,8 @@ def plot_heatmap(df: pd.DataFrame, title: str, out_file: Path) -> None:
         for j in range(data.shape[1]):
             value = data[i, j]
             label = "NA" if np.isnan(value) else f"{value:.3f}"
-            ax.text(j, i, label, ha="center", va="center", color="black", fontsize=10)
+            text_color = "white" if (not np.isnan(value) and value >= 0.96) else "black"
+            ax.text(j, i, label, ha="center", va="center", color=text_color, fontsize=10)
 
     cbar = fig.colorbar(im, ax=ax)
     cbar.set_label("Mean Spearman ($\\rho_{all}$)")

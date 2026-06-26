@@ -1,6 +1,7 @@
 # -- IMPORTS --
 from __future__ import annotations
 import argparse
+import itertools
 import os
 import pickle
 from pathlib import Path
@@ -32,14 +33,6 @@ EXPERIMENTS = {
         "methods": ["pairwise_ig", "pointwise_ig", "loo_pairwise", "loo_pointwise"],
     },
 }
-
-PAIR_COMPARISONS = [
-    ("pairwise_ig", "pointwise_ig"),
-    ("loo_pairwise", "loo_pointwise"),
-    ("pairwise_ig", "loo_pairwise"),
-    ("pointwise_ig", "loo_pointwise"),
-]
-
 
 def parse_args():
     parser = argparse.ArgumentParser()
@@ -187,9 +180,10 @@ def run_one(experiment_key: str):
         getter = lambda key, method: rows_from_duot5(key, method, pw_lookup, pt_lookup, loo_lookup)
 
     detail_rows = []
+    pair_comparisons = list(itertools.combinations(cfg["methods"], 2))
     for key in keys:
         tables = {method: getter(key, method) for method in cfg["methods"]}
-        for method_a, method_b in PAIR_COMPARISONS:
+        for method_a, method_b in pair_comparisons:
             table_a = tables[method_a]
             table_b = tables[method_b]
             rho, n_aligned = full_spearman(table_a, table_b)
