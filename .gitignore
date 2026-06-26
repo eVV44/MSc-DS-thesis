@@ -2,6 +2,7 @@
 ig-thesis/
 venv/
 __pycache__/
+.pycache/
 
 # Mac
 .DS_Store
@@ -22,6 +23,14 @@ checkpoints/
 # Large files
 *.pt
 *.bin
+
+# Legacy exploratory outputs
+outputs/
+outputs_monot5/
+outputs_t5/
+
+# Local generated caches
+thesis_runs/shared/swift_module_cache/
 
 # Papers 
 papers/
