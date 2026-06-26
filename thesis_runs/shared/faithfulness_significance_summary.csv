@@ -1,0 +1,9 @@
+experiment,comparison,metric,method_a,method_b,n_queries,auc_mean_a,auc_mean_b,median_diff_b_minus_a,wilcoxon_stat,p_value,higher_better,better_method,p_holm
+cross_encoder,CE LOO vs IG (pairwise),Deletion $\Delta g$,pairwise_ig,loo_pairwise,150,168.68230986567835,200.60788692439596,26.213555067777634,2851.0,1.3272185521927898e-07,True,loo_pairwise,5.308874208771159e-07
+cross_encoder,CE LOO vs IG (pairwise),Preservation $|g-g'|$,pairwise_ig,loo_pairwise,150,159.971478983139,139.79653796061874,-14.372143797576427,4006.0,0.0018836399767969791,False,loo_pairwise,0.0037672799535939583
+duot5,DuoT5 LOO vs IG (pairwise),Deletion $\Delta g$,pairwise_ig,loo_pairwise,150,80.08205039123695,179.5050811988612,75.03271800279617,661.0,6.350919948371571e-21,True,loo_pairwise,5.080735958697257e-20
+duot5,DuoT5 LOO vs IG (pairwise),Preservation $|g-g'|$,pairwise_ig,loo_pairwise,150,186.43576657772064,118.57386335392793,-51.56244558095932,2364.0,6.063320176094111e-10,False,loo_pairwise,3.0316600880470556e-09
+duot5,DuoT5 pairwise vs pointwise LOO,Deletion $\Delta g$,loo_pointwise,loo_pairwise,150,63.52909915606181,179.5050811988612,82.50400304794312,1166.0,3.26951434539734e-17,True,loo_pairwise,2.288660041778138e-16
+duot5,DuoT5 pairwise vs pointwise LOO,Preservation $|g-g'|$,loo_pointwise,loo_pairwise,150,127.40259847482045,118.57386335392793,-7.709484338760376,4839.0,0.12232613746016578,False,loo_pairwise,0.12232613746016578
+duot5,DuoT5 pairwise vs pointwise IG,Deletion $\Delta g$,pointwise_ig,pairwise_ig,150,0.3055475295583407,80.08205039123695,40.74015808105469,1407.0,1.4127945246030249e-15,True,pairwise_ig,8.47676714761815e-15
+duot5,DuoT5 pairwise vs pointwise IG,Preservation $|g-g'|$,pointwise_ig,pairwise_ig,150,150.5174218805631,186.43576657772064,41.01224875450134,3905.0,0.0009755284134140248,False,pointwise_ig,0.0029265852402420743
