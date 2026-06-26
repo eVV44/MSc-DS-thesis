@@ -24,7 +24,7 @@ Main folders:
 - `thesis_runs/`  
   Final outputs used in the thesis.
 - `data/`  
-  Local data directory expected by the scripts. The final experiments use MS MARCO passage dev data, which is not included in this repository and should be downloaded separately from the official MS MARCO release (https://microsoft.github.io/msmarco/).
+  Local data directory expected by the scripts. This directory is not tracked in the GitHub repository. The final experiments use MS MARCO passage dev data, which is not included in this repository and should be downloaded separately from the official MS MARCO release (https://microsoft.github.io/msmarco/).
   The scripts expect these files:
   - `data/msmarco_passage_dev/raw/queries.dev.tsv`
   - `data/msmarco_passage_dev/raw/qrels.dev.tsv`
@@ -35,7 +35,7 @@ Main folders:
 
 ## 2. Reproducing the thesis results
 
-The main thesis outputs are already saved in `thesis_runs/`. To reproduce the full pipeline from scratch, run the scripts from the repository root in this order:
+The main thesis output summaries are already saved in `thesis_runs/`. To reproduce the full pipeline from scratch, run the scripts from the repository root in this order:
 
 1. freeze query and explanation subsets (`scripts/freeze_query_scopes.py`, `scripts/freeze_explanation_subsets.py`, `scripts/freeze_stability_subset.py`)
 2. run reranking (`scripts/run_cross_encoder_reranking_final.py`, `scripts/run_monot5_reranking_for_duot5_final.py`, `scripts/run_duot5_reranking_final.py`)
